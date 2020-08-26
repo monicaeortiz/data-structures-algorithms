@@ -4,7 +4,7 @@ public class Isoceles extends Triangle{
     super(sameLength, sameLength, diffLength);
   }
 
-  public void changeSide(int side, int newLength){
+  public void changeSide(int side, double newLength){
     if (side == 0 || side == 1){
       super.changeSide(0,newLength);
       super.changeSide(1,newLength)''
