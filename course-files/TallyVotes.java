@@ -5,7 +5,6 @@ class TallyVotes {
 		String[][] votes = { { "A", "C", "D", "B" }, { "A", "C", "B", "D" }, { "A", "D", "C", "B" },
 				{ "B", "C", "A", "D" }, { "B", "D", "C", "A" }, { "C", "B", "A", "D" }, { "C", "D", "B", "A" },
 				{ "D", "C", "B", "A" } };
-
 		// create Ballot objects and put into ArrayList
 		ArrayList<Ballot> ballots = new ArrayList<Ballot>();
 		for (int i = 0; i < votes.length; i++){
@@ -18,7 +17,7 @@ class TallyVotes {
 		while(!done){
 			System.out.println("Round #" + round);
 			Collections.sort(ballots);
-			done = oneRound(ballots);
+			done =  (ballots);
 			System.out.println("---------------------");
 			round++;
 		}
