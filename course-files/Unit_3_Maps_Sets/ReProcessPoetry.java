@@ -26,9 +26,6 @@ public class ReProcessPoetry{
 
       // if word is valid...
       if (isValidWord(word)){
-        if(word.equals("i")){
-          System.out.println(word);
-        }
 
         word = word.toUpperCase();
         // if word is a repeat, add one to counts entry
@@ -66,5 +63,7 @@ public class ReProcessPoetry{
   public static String removeNonAlpha(String word){
     return word.replaceAll("[^A-Za-z']+", "");
   }
+
+  public static void reverseProcess(String path);
 
 }
