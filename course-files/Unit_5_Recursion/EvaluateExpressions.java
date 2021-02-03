@@ -31,44 +31,27 @@ public class EvaluateExpressions{
       String postfix = s.substring(end);
 
       // if isolate is the whole string, you're done
+      String operator = isolate.substring(0,1);
+
+      // isolate everything for the evaluation //
+      // locate spaces to isolate operands
+      int firstSpace = isolate.indexOf(" ");
+      int secondSpace = isolate.indexOf(" ",firstSpace + 1);
+
+      int op1 = Integer.parseInt(isolate.substring(firstSpace+1,secondSpace));
+      int op2 = Integer.parseInt(isolate.substring(secondSpace+1));
+
       if (isolate.equals(s)){
-        return doPrefix(isolate);
+
+        return evaluate(operator, op1, op2);
       }
       else{
-        return evalPrefix(prefix + doPrefix(isolate) + postfix);
+        return evalPrefix(prefix + evaluate(operator, op1, op2) + postfix);
       }
     }
     return 0;
   }
 
-  // perform a single prefix notation operation
-  public static int doPrefix(String s){
-    // System.out.println(s);
-    String operator = s.substring(0,1);
-
-    // locate spaces to isolate operands
-    int firstSpace = s.indexOf(" ");
-    int secondSpace = s.indexOf(" ",firstSpace + 1);
-
-    int op1 = Integer.parseInt(s.substring(firstSpace+1,secondSpace));
-    int op2 = Integer.parseInt(s.substring(secondSpace+1));
-
-    if (operator.equals("+")){
-      return op1+op2;
-    }
-    else if(operator.equals("-")){
-      return op1 - op2;
-    }
-    else if(operator.equals("*")){
-      return op1 * op2;
-    }
-    else if(operator.equals("/")){
-      return op1 / op2;
-    }
-    else{
-      return (int) Math.pow(op1, op2);
-    }
-  }
   // evaluate and return the integer answer of a postfix notation
   // Precondition: expression contains only these operators: + - * / ^
   // Precondition: expression contains only integer operands
@@ -86,32 +69,33 @@ public class EvaluateExpressions{
     }
     // isolate the String
     String isolate = s.substring(start, end);
-    System.out.println("Isolated: " + isolate);
+    // System.out.println("Isolated: " + isolate);
+
+    String operator = isolate.substring(isolate.length()-1);
+
+    // locate spaces to isolate operands
+    int firstSpace = isolate.indexOf(" ");
+    int secondSpace = isolate.indexOf(" ",firstSpace + 1);
+
+    int op1 = Integer.parseInt(isolate.substring(0,firstSpace));
+    int op2 = Integer.parseInt(isolate.substring(firstSpace+1, secondSpace));
+
 
     String prefix = s.substring(0,start);
     String postfix = s.substring(end);
 
     // if isolate is the whole string, you're done
     if (isolate.equals(s)){
-      return doPostfix(isolate);
+      return evaluate(operator, op1, op2);
     }
     else{
-      return evalPostfix(prefix + doPostfix(isolate) + postfix);
+      return evalPostfix(prefix + evaluate(operator, op1, op2) + postfix);
     }
     // return 0;
   }
 
-  // perform a single postfix notation operation
-  public static int doPostfix(String s){
-    String operator = s.substring(s.length()-1);
-
-    // locate spaces to isolate operands
-    int firstSpace = s.indexOf(" ");
-    int secondSpace = s.indexOf(" ",firstSpace + 1);
-
-    int op1 = Integer.parseInt(s.substring(0,firstSpace));
-    int op2 = Integer.parseInt(s.substring(firstSpace+1, secondSpace));
-
+  // perform a single prefix notation operation
+  public static int evaluate(String operator, int op1, int op2){
     if (operator.equals("+")){
       return op1+op2;
     }
