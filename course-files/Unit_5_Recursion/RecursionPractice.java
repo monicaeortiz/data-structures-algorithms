@@ -7,7 +7,7 @@ public class RecursionPractice{
     // System.out.println("Math problem #2: f(f(f(f(f(4))))) = " + foo2(foo2(foo2(foo2(foo2(4))))));
     // System.out.println("Math problem #3: triangles(1) = " + triangles(1));
     // System.out.println("Math problem #3: triangles(5) = " + triangles(5));
-    // solveHanoi(3, 1, 2, 3);
+    //solveHanoi(3, 1, 2, 3);
     directoryCrawl(new File("/Users/mortiz/Documents/GitHub/data-structures-algorithms/"),0);
 
   }
