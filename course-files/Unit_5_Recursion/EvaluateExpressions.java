@@ -17,7 +17,7 @@ public class EvaluateExpressions{
   // Precondition: individual operators and operands are space-separated
   public static int evalPrefix(String s){
     // scan the String left -> for operator, operand, operand
-    Pattern p = Pattern.compile(" [0-9]+ [0-9]+");   // the pattern to search for
+    Pattern p = Pattern.compile(" [0-9]+ [0-9]+");  // the pattern to search for
     Matcher m = p.matcher(s);
 
     // isolate the substring of the first instance as this must be preceeded by an operator
