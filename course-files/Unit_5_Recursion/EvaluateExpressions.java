@@ -8,7 +8,8 @@ import java.util.regex.Pattern;
 public class EvaluateExpressions{
   public static void main(String[] args){
     System.out.println(evalPrefix("+ - / + 2 4 3 / - 9 1 2 / / * 8 3 * 6 2 ^ 1 - 4 1"));
-    System.out.println(evalPostfix("2 4 * 8 4 / + 2 ^"));
+    System.out.println(evalPostfix("-2 4 * 8 4 / + 2 ^"));
+    System.out.println(evalPrefix("/ + 2 -4 2"));
   }
 
   // evaluate and return the integer answer of a prefix notation
@@ -17,7 +18,7 @@ public class EvaluateExpressions{
   // Precondition: individual operators and operands are space-separated
   public static int evalPrefix(String s){
     // scan the String left -> for operator, operand, operand
-    Pattern p = Pattern.compile(" [0-9]+ [0-9]+");  // the pattern to search for
+    Pattern p = Pattern.compile(" -?[0-9]+ -?[0-9]+");  // the pattern to search for
     Matcher m = p.matcher(s);
 
     // isolate the substring of the first instance as this must be preceeded by an operator
@@ -58,7 +59,7 @@ public class EvaluateExpressions{
   // Precondition: individual operators and operands are space-separated
   public static int evalPostfix(String s){
     // scan the String left -> for operator, operand, operand
-    Pattern p = Pattern.compile("[0-9]+ [0-9]+ ");   // the pattern to search for
+    Pattern p = Pattern.compile("-?[0-9]+ -?[0-9]+ ");   // the pattern to search for
     Matcher m = p.matcher(s);
 
     // isolate the substring of the last instance as this must be succeeded by an operator
